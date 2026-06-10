@@ -9,7 +9,7 @@ A full-stack, production-grade event planning system built with modern web techn
 ![React](https://img.shields.io/badge/React-19-blue)
 ![Hono](https://img.shields.io/badge/Hono-4.6-orange)
 ![Bun](https://img.shields.io/badge/Bun-1.x-black)
-![Postgres](https://img.shields.io/badge/Postgres-16-blue)
+![Postgres](https://img.shields.io/badge/Postgres-17-blue)
 ![Drizzle](https://img.shields.io/badge/Drizzle-ORM-green)
 
 ---
@@ -20,7 +20,7 @@ A full-stack, production-grade event planning system built with modern web techn
 |-------|-----------|
 | **Frontend** | React 19, TypeScript, Tailwind CSS, Vite, React Router 7 |
 | **Backend** | Hono 4 (lightweight API framework), Bun runtime |
-| **Database** | PostgreSQL 17.5-Alphine, Drizzle ORM |
+| **Database** | PostgreSQL 17, Drizzle ORM |
 | **Auth** | Better-Auth |
 | **Container** | Docker & Docker Compose |
 | **Payments** | Chapa Payment |
