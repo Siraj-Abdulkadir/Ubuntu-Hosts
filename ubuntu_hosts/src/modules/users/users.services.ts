@@ -88,3 +88,33 @@ export async function registerAttendee(
     registered_at: newAttendee.created_at,
   }
 }
+
+export interface AttendeeExport {
+  id: number
+  name: string
+  email: string
+  status: string
+  registered_at: Date | null
+}
+
+export async function getAttendeesByEventId(eventId: number): Promise<AttendeeExport[]> {
+  const result = await db
+    .select({
+      id:         attendees.id,
+      name:       attendees.name,
+      email:      attendees.email,
+      status:     attendees.status,
+      created_at: attendees.created_at,
+    })
+    .from(attendees)
+    .where(eq(attendees.event_id, eventId))
+    .orderBy(attendees.created_at)
+
+  return result.map(a => ({
+    id: a.id,
+    name: a.name,
+    email: a.email,
+    status: a.status,
+    registered_at: a.created_at,
+  }))
+}
