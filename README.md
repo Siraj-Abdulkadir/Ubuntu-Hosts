@@ -110,7 +110,7 @@ ubuntu-hosts/
 
 ```bash
 # 1. Clone and install dependencies
-git clone <repo-url> ubuntu-hosts
+git clone https://github.com/ADVFINALPROJ1/Ubuntu-Hosts.git ubuntu-hosts
 cd ubuntu-hosts
 bun install
 
@@ -190,11 +190,9 @@ docker run -p 3000:3000 ubuntu-hosts
 | Variable | Description |
 |----------|-------------|
 | `DATABASE_URL` | PostgreSQL connection string |
-| `JWT_SECRET` | JWT signing secret |
-| `APP_NAME` | Application name |
-| `APP_URL` | Backend URL |
-| `FRONTEND_URL` | Frontend URL (for CORS) |
-| `RESEND_API_KEY` | Resend email API key (optional) |
+| `DB_USER` | Database Users Username |
+| `DB_PASSWORD` | Database password |
+| `DB_NAME` | Name of the Database ||
 
 
 ## Team Members
