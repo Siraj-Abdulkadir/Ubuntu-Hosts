@@ -3,6 +3,7 @@ import {
   getEventForRSVP,
   checkDuplicateRSVP,
   registerAttendee,
+  getAttendeesByEventId,
 } from './users.services'
 
 const usersRoute = new Hono()
@@ -46,6 +47,38 @@ usersRoute.post('/events/:id/rsvp', async (c) => {
     message: 'Registration successful',
     confirmation,
   }, 201)
+})
+
+function generateCSV(attendees: { name: string; email: string; status: string; registered_at: Date | null }[]): string {
+  const headers = ['Name', 'Email', 'Status', 'Registered At']
+  const rows = attendees.map(a => [
+    `"${a.name.replace(/"/g, '""')}"`,
+    `"${a.email.replace(/"/g, '""')}"`,
+    `"${a.status}"`,
+    `"${a.registered_at ? new Date(a.registered_at).toISOString() : ''}"`,
+  ])
+  return [headers.join(','), ...rows.map(r => r.join(','))].join('\n')
+}
+
+usersRoute.get('/events/:id/attendees/export', async (c) => {
+  const eventId = Number(c.req.param('id'))
+
+  if (isNaN(eventId)) {
+    return c.json({ error: 'Invalid event ID' }, 400)
+  }
+
+  const event = await getEventForRSVP(eventId)
+  if (!event) {
+    return c.json({ error: 'Event not found' }, 404)
+  }
+
+  const attendees = await getAttendeesByEventId(eventId)
+  const csv = generateCSV(attendees)
+
+  return c.body(csv, 200, {
+    'Content-Type': 'text/csv',
+    'Content-Disposition': `attachment; filename="attendees-event-${eventId}.csv"`,
+  })
 })
 
 export default usersRoute
