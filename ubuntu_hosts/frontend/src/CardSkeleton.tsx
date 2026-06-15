@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from "./components/ui/card"
-import { Skeleton } from "./components/ui/skeleton"
+import { Card, CardContent, CardHeader } from "./components/ui/card.tsx"
+import { Skeleton } from "./components/ui/skeleton.tsx"
 
 export function SkeletonCard() {
   return (
@@ -13,4 +13,19 @@ export function SkeletonCard() {
       </CardContent>
     </Card>
   )
+}
+
+export function SkeletonContainer() {  
+  
+  
+
+    return (
+  
+  <div className="skeleton" style={{display:'flex', justifyContent:'space-between', padding:'0.5rem 0rem'}}>
+    <SkeletonCard />
+    <SkeletonCard />
+    <SkeletonCard />
+    <SkeletonCard />
+  </div>
+    )
 }
