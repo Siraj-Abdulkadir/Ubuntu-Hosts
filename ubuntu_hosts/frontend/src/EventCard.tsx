@@ -8,6 +8,7 @@ import {
   CardHeader,
   CardTitle,
 } from "./components/ui/card"
+import { MapPin } from "lucide-react"
 
 export function EventCard() {
   return (
@@ -20,9 +21,13 @@ export function EventCard() {
       />
       <CardHeader>
         <CardAction>
-          <Badge variant="secondary">Featured</Badge>
+          <Badge variant="destructive">June 29</Badge>
         </CardAction>
         <CardTitle>Design systems meetup</CardTitle>
+        <div className="sub_header" style={{display:'flex',justifyContent:'left',gap:'2px'}}>
+        <MapPin style={{width:'16px',height:'16px'}}/>
+        <Badge variant="secondary">Skylight Hotel, Bole</Badge>
+        </div>
         <CardDescription>
           A practical talk on component APIs, accessibility, and shipping
           faster.
