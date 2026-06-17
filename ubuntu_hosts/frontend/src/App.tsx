@@ -1,3 +1,4 @@
+import { Toaster } from 'sonner';
 import './App.css'
 import { SkeletonContainer } from './CardSkeleton'
 import { EventCardPack } from './EventCard'
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <>
+     <Toaster />
     <NavBar />
 
   
