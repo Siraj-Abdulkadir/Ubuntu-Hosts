@@ -23,7 +23,7 @@ function NavBar() {
       <div className="right_buttons">
     <InputInline />
 
-<Link to="/signup">
+<Link to="/login">
       <Button>Sign In</Button></Link>
       <div className="sidebar-trigger">
       <SideBar children={children} />

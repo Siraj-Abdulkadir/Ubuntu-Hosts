@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"
 import { Button } from "./components/ui/button"
 import {
   Card,
@@ -11,22 +12,21 @@ import {
 import { Input } from "./components/ui/input"
 import { Label } from "./components/ui/label"
 import NavBar from "./NavBar"
-import { Link } from "react-router-dom"
 
-export function  SignUp() {
+export function  Login() {
   return (
 <>
 <NavBar />
     <div className="card_con" style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh" }}>
     <Card className="w-full max-w-sm">
       <CardHeader>
-        <CardTitle>Sign up for an account</CardTitle>
+        <CardTitle>Login to your account</CardTitle>
         <CardDescription>
-          Enter your email below to create an account
+          Enter your email below to login to your account
         </CardDescription>
         <CardAction>
-          <Link to="/login">
-          <Button variant="link">Login</Button> </Link>
+          <Link to="/signup">
+          <Button variant="link">Sign Up</Button> </Link>
         </CardAction>
       </CardHeader>
       <CardContent>
@@ -44,6 +44,12 @@ export function  SignUp() {
             <div className="grid gap-2">
               <div className="flex items-center">
                 <Label htmlFor="password">Password</Label>
+                <a
+                  href="#"
+                  className="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+                >
+                  Forgot your password?
+                </a>
               </div>
               <Input id="password" type="password" required />
             </div>
@@ -52,10 +58,10 @@ export function  SignUp() {
       </CardContent>
       <CardFooter className="flex-col gap-2">
         <Button type="submit" className="w-full">
-          Create Account
+          Login
         </Button>
         <Button variant="outline" className="w-full">
-         Sign up with Google
+         Login with Google
         </Button>
       </CardFooter>
     </Card>
