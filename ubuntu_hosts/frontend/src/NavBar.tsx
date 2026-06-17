@@ -25,6 +25,7 @@ function NavBar() {
 
 <Link to="/login">
       <Button>Sign In</Button></Link>
+
       <div className="sidebar-trigger">
       <SideBar children={children} />
       </div>
