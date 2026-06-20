@@ -9,6 +9,7 @@ import {
   CardTitle,
 } from "./components/ui/card"
 import { MapPin } from "lucide-react"
+import { Link } from "react-router-dom"
 
 export function EventCard() {
   return (
@@ -34,7 +35,9 @@ export function EventCard() {
         </CardDescription>
       </CardHeader>
       <CardFooter>
-        <Button className="w-full">View Event</Button>
+        <Link to="/details">
+          <Button  className="w-full">View Event</Button>
+        </Link>
       </CardFooter>
     </Card>
   )
