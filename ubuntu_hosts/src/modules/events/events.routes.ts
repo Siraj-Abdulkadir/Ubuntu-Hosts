@@ -43,3 +43,4 @@ eventRoutes.get('/:id', async (c) => {
   if (!event) return c.json({ message: 'Event not found' }, 404)
   return c.json({ event })
 })
+export default eventRoutes
