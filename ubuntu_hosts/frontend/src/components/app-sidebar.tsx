@@ -21,7 +21,7 @@ import {
   CollapsibleContent,
 } from "./ui/collapsible"
 import { Separator } from "./ui/separator"
-
+import {Link} from "react-router-dom"
 
 const Events = [
   {
@@ -68,6 +68,7 @@ export function AppSidebar() {
       <SidebarContent>
         <SidebarGroup>
           <SidebarGroupLabel>Create an Event</SidebarGroupLabel>
+          <Link to="/view-dashboard">Dashboard</Link>
           <SidebarGroupAction>
             <Plus /> <span className="sr-only">Add Project</span>
           </SidebarGroupAction>
