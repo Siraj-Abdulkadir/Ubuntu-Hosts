@@ -106,3 +106,7 @@ export const accountRelations = relations(account, ({ one }) => ({
     references: [user.id],
   }),
 }));
+
+
+export * from "../modules/users/users.schemas";
+export * from "../modules/events/events.schemas";

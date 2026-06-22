@@ -3,19 +3,31 @@ import { cors } from 'hono/cors'
 import eventRoutes from './modules/events/events.routes'
 import usersRoute from './modules/users/users.routes'
 import { auth } from './lib/auth'
+import { cors } from 'hono/cors'
+import type { LoaderFunctionArgs, ActionFunctionArgs } from "react-router"
 
 const app = new Hono()
 
-app.use('*', cors({
-  origin: 'http://localhost:5173',
-  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowHeaders: ['Content-Type', 'Authorization'],
-  credentials: true,
-}))
+/** * CORS Configuration 
+ * Applied globally to all routes, properly allowing credentials and headers
+ */
+app.use(
+  '/*',
+  cors({
+    origin: 'http://localhost:5173', 
+    allowHeaders: ['Content-Type', 'Authorization', 'X-Custom-Header'],
+    allowMethods: ['POST', 'GET', 'OPTIONS', 'PUT', 'DELETE'],
+    exposeHeaders: ['Content-Length', 'X-Kuma-Revision'],
+    maxAge: 600,
+    credentials: true,
+  })
+)
 
+// Routes
 app.route('/events', eventRoutes)
 app.route('/', usersRoute)
 
+// Better Auth Endpoint Handler
 app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw))
 
 app.post('/logout', async (c) => {
@@ -28,5 +40,14 @@ app.post('/logout', async (c) => {
 app.get('/', (c) => {
   return c.text('Ubuntu Hosts API is running')
 })
+
+// React Router integration exports
+export async function loader({ request }: LoaderFunctionArgs) {
+    return auth.handler(request)
+}
+
+export async function action({ request }: ActionFunctionArgs) {
+    return auth.handler(request)
+}
 
 export default app
