@@ -26,6 +26,16 @@ export const auth = betterAuth({
     },
   },
   trustedOrigins: ["http://localhost:5173"],
+   user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        required: true,
+        defaultValue: "attendee",
+        input: true,
+      },
+    },
+  },
   plugins: [
         openAPI(), 
     ]
