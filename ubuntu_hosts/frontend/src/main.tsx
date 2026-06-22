@@ -10,6 +10,7 @@ import { TableComponent } from './TableComponent.tsx'
 import OrganizerDashboard from './OrganizerDashboard.tsx'
 import EventForm from './EventForm.tsx'
 import PaymentRedirect from './PaymentRedirect.tsx'
+import CheckoutReservation from './components/CheckoutReservation.tsx'
 
 const route = createBrowserRouter([
   { path: '/', element: <App /> },
@@ -21,6 +22,7 @@ const route = createBrowserRouter([
   { path: '/create-event', element: <EventForm mode="create" /> },
   { path: '/edit-event/:id', element: <EventForm mode="edit" /> },
   { path: '/payment', element: <PaymentRedirect /> },
+  { path: '/checkout', element: <CheckoutReservation /> },
 ])
 
 createRoot(document.getElementById('root')!).render(
