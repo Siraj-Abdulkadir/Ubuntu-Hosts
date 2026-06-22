@@ -98,10 +98,15 @@ export const OrganizerDashboard = () => {
             Manage your events
           </p>
         </div>
-        <Button variant="outline" onClick={handleLogout}>
-          <LogOut size={16} style={{ marginRight: "0.5rem" }} />
-          Log Out
-        </Button>
+        <div style={{ display: "flex", gap: "0.5rem" }}>
+          <Button onClick={() => navigate("/create-event")}>
+            + Create Event
+          </Button>
+          <Button variant="outline" onClick={handleLogout}>
+            <LogOut size={16} style={{ marginRight: "0.5rem" }} />
+            Log Out
+          </Button>
+        </div>
       </div>
 
       {/* Stats Card */}
