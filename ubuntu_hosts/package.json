@@ -12,8 +12,10 @@
     "dotenv": "^17.4.2",
     "drizzle-orm": "^0.45.2",
     "hono": "^4.12.23",
+    "nodemailer": "^9.0.1",
     "pg": "^8.21.0",
     "postgres": "^3.4.9",
+    "react-router": "^8.0.1",
     "zod": "^4.4.3"
   },
   "devDependencies": {
