@@ -9,8 +9,15 @@ app.route('/events', eventRoutes)
 app.route('/', usersRoute)
 
 app.on(["POST", "GET"], "/api/auth/*", (c) => auth.handler(c.req.raw))
-.get('/', (c) => {
 
+app.post('/logout', async (c) => {
+  await auth.api.signOut({
+    headers: c.req.raw.headers,
+  })
+  return c.json({ message: 'Logged out successfully. Redirecting to landing page.' })
+})
+
+app.get('/', (c) => {
   return c.text('Ubuntu Hosts API is running')
 })
 
