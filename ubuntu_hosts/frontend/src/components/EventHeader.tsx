@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
 
@@ -12,10 +13,11 @@ const EventHeader = ({ title, category }: Props) => {
       <h1 className="text-4xl font-bold tracking-tight">
         {title}
       </h1>
-      <Button  size="lg">
+      <Link        to="/">
+      <Button size="lg">
         Register
       </Button>
-
+</Link>
       {category && (
         <Badge variant="secondary">
           {category}
